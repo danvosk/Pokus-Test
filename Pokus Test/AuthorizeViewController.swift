@@ -9,8 +9,6 @@ import UIKit
 
 class AuthorizeViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
   
-    
-
     @IBOutlet weak var tableView: UITableView!
     
     let accounts = ["Vaadesiz TL", "Vaadesiz EUR", "Vaadesiz USD"]
@@ -32,13 +30,29 @@ class AuthorizeViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedAccount = accounts[indexPath.row]
+//        print("\(selectedAccount) seçildi")
+//
+//        // Example 7'ye geri dönmek için URL scheme kullanımı
+//        let customUrl = "akbanktestScheme://?selectedAccount=\(selectedAccount)"
+//        if let url = URL(string: customUrl) {
+//            if UIApplication.shared.canOpenURL(url) {
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            } else {
+//                print("Akbank Test app schema not found")
+//            }
+//        }
+//
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedAccount = accounts[indexPath.row]
         print("\(selectedAccount) seçildi")
 
-        // Example 7'ye geri dönmek için URL scheme kullanımı
+        // Akbank Test uygulamasına geri dönmek için URL scheme kullanımı
         let customUrl = "akbanktestScheme://?selectedAccount=\(selectedAccount)"
-        if let url = URL(string: customUrl) {
+        if let url = URL(string: customUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -49,5 +63,4 @@ class AuthorizeViewController: UIViewController,UITableViewDelegate,UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    
 }
