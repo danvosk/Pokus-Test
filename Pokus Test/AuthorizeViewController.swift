@@ -33,7 +33,21 @@ class AuthorizeViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        let selectedAccount = accounts[indexPath.row]
+        print("\(selectedAccount) seçildi")
+
+        // Example 7'ye geri dönmek için URL scheme kullanımı
+        let customUrl = "akbanktestScheme://?selectedAccount=\(selectedAccount)"
+        if let url = URL(string: customUrl) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                print("Akbank Test app schema not found")
+            }
+        }
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+
     
 }
