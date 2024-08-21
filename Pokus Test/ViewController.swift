@@ -4,7 +4,7 @@
 //
 //  Created by Görkem Karagöz on 14.08.2024.
 //
-
+//
 import UIKit
 import FirebaseAuth
 
@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var openedFromAkbankTest: Bool = false  // Bu, SceneDelegate'den gelen bilgiyi saklayacak
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,11 @@ class ViewController: UIViewController {
             if let error = error {
                 self.showAlert(message: "Giriş başarısız: \(error.localizedDescription)")
             } else {
-                self.performSegue(withIdentifier: "toOtherBanksScreenVC", sender: nil)
+                if self.openedFromAkbankTest {
+                    self.performSegue(withIdentifier: "toAuthorizeVc", sender: nil)
+                } else {
+                    self.performSegue(withIdentifier: "toOtherBanksScreenVC", sender: nil)
+                }
             }
         }
     }
@@ -45,3 +51,5 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+

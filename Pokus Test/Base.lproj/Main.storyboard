@@ -41,7 +41,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Giriş Yap"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Giriş Yap">
+                                    <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vgb-tc-qZJ"/>
                                 </connections>
@@ -51,7 +53,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Kayıt Ol"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Kayıt Ol">
+                                    <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="registerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xdN-Ud-WC7"/>
                                 </connections>
@@ -70,6 +74,7 @@
                         <outlet property="passwordTextField" destination="Gvp-i1-lfL" id="jMT-Nc-lCu"/>
                         <segue destination="YTe-By-efo" kind="show" identifier="toOtherBanksScreenVC" id="SnZ-aG-ap9"/>
                         <segue destination="TW6-iV-OOF" kind="presentation" identifier="toRegisterVC" modalPresentationStyle="overFullScreen" id="Z9T-7v-wWj"/>
+                        <segue destination="NMZ-Ax-1jO" kind="show" identifier="toAuthorizeVc" id="zV6-jX-kwT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -149,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4c-bf-UA0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888" y="-2"/>
+            <point key="canvasLocation" x="1083" y="-2"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bcg-Zw-tYf">
@@ -309,7 +314,7 @@
         <!--Authorize View Controller-->
         <scene sceneID="9he-v5-Zw5">
             <objects>
-                <viewController id="NMZ-Ax-1jO" customClass="AuthorizeViewController" customModule="Pokus_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="NMZ-Ax-1jO" customClass="AuthorizeViewController" customModule="Pokus_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BWN-mb-SBX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -317,6 +322,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtI-gs-wft">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Yetki Ver" id="sJ5-L4-4eh"/>
                                 </items>
@@ -340,10 +346,14 @@
                         <viewLayoutGuide key="safeArea" id="bKz-Pk-lhU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9q8-UN-mwU"/>
+                    <connections>
+                        <outlet property="tableView" destination="qfy-DO-bGc" id="o9m-xW-zti"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBF-rL-XkF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-387.02290076335879" y="3146.4788732394368"/>
+            <point key="canvasLocation" x="-883" y="-2"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Jne-aL-kqP">
