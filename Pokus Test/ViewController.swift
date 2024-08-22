@@ -3,8 +3,8 @@
 //  Pokus Test
 //
 //  Created by Görkem Karagöz on 14.08.2024.
-//
-//
+
+
 import UIKit
 import FirebaseAuth
 
@@ -51,5 +51,3 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
-
-

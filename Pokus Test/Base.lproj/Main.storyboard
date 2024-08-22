@@ -298,12 +298,17 @@
                                 <rect key="frame" x="16" y="31" width="88" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="ZXV-eN-imq">
+                                <rect key="frame" x="0.0" y="399" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S6D-Qr-Lif"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Q8g-dz-QDk"/>
                     <connections>
+                        <outlet property="indicatorView" destination="ZXV-eN-imq" id="8Ya-5g-Efa"/>
                         <outlet property="tableview" destination="1AK-0X-kBE" id="Zm2-aQ-beh"/>
                     </connections>
                 </viewController>
