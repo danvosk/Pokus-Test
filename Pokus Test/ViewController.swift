@@ -4,7 +4,6 @@
 //
 //  Created by Görkem Karagöz on 14.08.2024.
 
-
 import UIKit
 import FirebaseAuth
 
@@ -13,7 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var openedFromAkbankTest: Bool = false  // Bu, SceneDelegate'den gelen bilgiyi saklayacak
+    var openedFromAkbankTest: Bool = false
+    var userEmailFromAkbank: String? // Akbank Test'ten gelen email adresini saklayacak
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,12 @@ class ViewController: UIViewController {
             return
         }
         
+        // Eğer Akbank'tan geldiyse ve email adresleri uyuşmuyorsa giriş yapmayı engelle
+        if openedFromAkbankTest, let userEmailFromAkbank = userEmailFromAkbank, email != userEmailFromAkbank {
+            showAlert(message: "Girdiğiniz e-posta, Akbank uygulamasındaki e-posta ile uyuşmuyor. Giriş yapılamıyor.")
+            return
+        }
+
         // Firebase Authentication ile kullanıcı girişi
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {

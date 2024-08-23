@@ -12,25 +12,32 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
     var openedFromAkbankTest: Bool = false
 
+    var userEmailFromAkbank: String?
+    
       func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
           guard let _ = (scene as? UIWindowScene) else { return }
-
+          
           if let urlContext = connectionOptions.urlContexts.first {
-              let url = urlContext.url
-              if url.scheme == "pokustestScheme" {  // Bu scheme Akbank Test'ten açıldığında kullanılıyor
-                  openedFromAkbankTest = true
-              }
-          }
+                      let url = urlContext.url
+                      if url.scheme == "pokustestScheme" {
+                          openedFromAkbankTest = true
+                          if let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: true)?.queryItems {
+                              userEmailFromAkbank = queryItems.first(where: { $0.name == "userEmail" })?.value
+                          }
+                      }
+                  }
 
-          let storyboard = UIStoryboard(name: "Main", bundle: nil)
-          if let initialViewController = storyboard.instantiateInitialViewController() as? ViewController {
-              initialViewController.openedFromAkbankTest = openedFromAkbankTest
-              window?.rootViewController = initialViewController
-              window?.makeKeyAndVisible()
-          }
+                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                  if let initialViewController = storyboard.instantiateInitialViewController() as? ViewController {
+                      initialViewController.openedFromAkbankTest = openedFromAkbankTest
+                      initialViewController.userEmailFromAkbank = userEmailFromAkbank
+                      window?.rootViewController = initialViewController
+                      window?.makeKeyAndVisible()
+                  }
+              }
+          
       }
 
   
@@ -49,4 +56,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
     }
-}
+
