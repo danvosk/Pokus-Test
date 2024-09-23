@@ -5,6 +5,7 @@
     
     <key>LSApplicationQueriesSchemes</key>
     <array>
+        <string>garantitestSchemes</string>
         <string>akbanktestScheme</string>
     </array>
     
